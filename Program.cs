@@ -19,6 +19,9 @@ public class FountainOfObjectsGame : Map
     public bool hasWon = false;
     public bool isAlive = true;
 
+    public DateTime startTime = DateTime.Now;
+    public DateTime finishedLocal;
+
 
     public void Rounds()
     {
@@ -34,6 +37,9 @@ public class FountainOfObjectsGame : Map
             GameOverCheck();
             if (hasWon == true || isAlive == false)
             {
+                finishedLocal = DateTime.Now;
+                TimeSpan timeSpan = finishedLocal - startTime;
+                Console.WriteLine($"It took you {timeSpan} to finish the game.");
                 break;
             }
             PlayerCommand();
